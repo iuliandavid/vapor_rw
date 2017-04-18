@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  #embed("title")
+ </head>
+ <body>
+   #loop(users,"user") {
+  <h1>Hello,#(user)!</h1>
+  }
+ </body>
+</html>
