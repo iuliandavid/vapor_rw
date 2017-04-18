@@ -11,7 +11,7 @@
   * Initialize heroku with vapor:  **vapor heroku init ** 
 *NOTE*: DO NOT PUSH TO HEROKU(on the last question answer with NO) (see below) 
 
- ![Screenshot from 2017-04-18 16-50-52.png](https://bitbucket.org/repo/ekkkp4n/images/1426403656-Screenshot%20from%202017-04-18%2016-50-52.png)
+![Screenshot from 2017-04-18 16-50-52.png](https://bitbucket.org/repo/8zzzxjK/images/409684666-Screenshot%20from%202017-04-18%2016-50-52.png)
 
 
   * Create a database:   ** heroku addons:create heroku-postgresql:hobby-dev **
