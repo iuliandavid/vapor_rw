@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="swiftapplicationlaunchconfigurationtype">
+<stringAttribute key="ch.hsr.ifs.tifig.core.MODULE_NAME_ATTR" value="App"/>
+<stringAttribute key="ch.hsr.ifs.tifig.core.PROCESS_ARGUMENTS_ATTR" value=""/>
+<stringAttribute key="ch.hsr.ifs.tifig.core.PROJECT_NAME_ATTR" value="skeleton"/>
+</launchConfiguration>
