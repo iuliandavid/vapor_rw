@@ -47,5 +47,8 @@ drop.get("combine") { request in
 let validators = ValidatorsController(drop: drop)
 validators.addRoutes()
 
+// MARK: - Add Users Resouce
+let users = TILUserController()
+drop.resource("users", users)
 
 drop.run()
