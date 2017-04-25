@@ -1,16 +1,21 @@
 import Vapor
 import HTTP
 
-final class TILUserController: ResourceRepresentable {
+final class TILUserController {
     
-    func makeResource() -> Resource<TILUser> {
-        return Resource(
-            index: index,
-            store: create,
-            show: show,
-            modify: update,
-            destroy: delete
-        )
+    
+    private let droplet: Droplet
+
+    init(droplet: Droplet) {
+        self.droplet = droplet
+    }
+    func addRoutes() {
+        let basic = droplet.grouped("users")
+        basic.get(handler: index)
+        basic.post(handler: create)
+        basic.delete(TILUser.self, handler: delete)
+        basic.get(TILUser.self, "acronyms", handler: acronymIndex)
+        
     }
 
     func index(request: Request) throws -> ResponseRepresentable {
@@ -35,7 +40,17 @@ final class TILUserController: ResourceRepresentable {
     /// `` 
     func show(request: Request, user: TILUser) throws -> ResponseRepresentable {
         /// That's why we return the directly retrieved user
-        return user
+        return try JSON(node: [
+            "user" : user.name.value,
+            "email" : user.email.value,
+            "id" : user.id
+        ])
+    }
+
+    /// List The Acronymns For A particular User
+    func acronymIndex(request: Request, user: TILUser) throws -> ResponseRepresentable {
+        let children = try user.acronyms()
+        return try JSON(node: children.makeNode())
     }
    
 

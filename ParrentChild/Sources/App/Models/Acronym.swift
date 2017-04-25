@@ -9,17 +9,23 @@ final class Acronym: Model {
     var long: String
     /// Set to true if the model is retrieved from database
     var exists: Bool = false
+
+    /// Adding parrent refernece
+    var tiluserId: Node?
+
     /// Default initializer
-    init(short: String, long: String) {
+    init(short: String, long: String, tiluserId: Node? = nil) {
         self.id = nil
         self.long = long
-        self.short = short   
+        self.short = short
+        self.tiluserId = tiluserId   
     }
 
     init(node: Node, in context: Context) throws {
         id = try node.extract("id")
         short = try node.extract("short")
         long = try node.extract("long")
+        tiluserId = try node.extract("tiluser_id")
     }
     /// Creates the database based on the name and fields passed
     public static func prepare(_ database: Database ) throws {
@@ -32,6 +38,8 @@ final class Acronym: Model {
             // Column ** long ** will be of type String -> Char or varchar in 
             // SQL creation
             acronymDef.string("long")
+            // adding foreign key to users table
+            acronymDef.parent(TILUser.self, optional: false)
         }
     }
 
@@ -44,7 +52,8 @@ final class Acronym: Model {
         return try Node(node: [
             "id": id,
             "short" : short,
-            "long": long
+            "long": long,
+            "tiluser_id": tiluserId
         ])
     }
 }

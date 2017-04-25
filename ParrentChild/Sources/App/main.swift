@@ -20,6 +20,7 @@ let log = drop.log.self
 // MARK: - Database config
 try drop.addProvider(VaporPostgreSQL.Provider.self)
 drop.preparations.append(Acronym.self)
+drop.preparations.append(TILUser.self)
 
 (drop.view as? LeafRenderer)?.stem.cache = nil
 // MARK: - Add BasicController
@@ -48,7 +49,7 @@ let validators = ValidatorsController(drop: drop)
 validators.addRoutes()
 
 // MARK: - Add Users Resouce
-let users = TILUserController()
-drop.resource("users", users)
+let users = TILUserController(droplet: drop)
+users.addRoutes()
 
 drop.run()
