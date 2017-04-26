@@ -28,8 +28,8 @@ let basic = BasicController(drop: drop)
 basic.addRoutes()
 
 // MARK: - Add Acronyms Resouce
-let acronyms = AcronymsController()
-drop.resource("acronyms", acronyms)
+let acronyms = AcronymsController(droplet: drop)
+acronyms.addRoutes()
 
 
 let til = TILController(droplet: drop)

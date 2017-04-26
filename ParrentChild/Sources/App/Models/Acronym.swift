@@ -57,3 +57,9 @@ final class Acronym: Model {
         ])
     }
 }
+
+extension Acronym {
+    func user() throws -> TILUser? {
+       return try parent(tiluserId, nil, TILUser.self).get()
+    }
+}

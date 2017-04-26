@@ -1,16 +1,22 @@
 import Vapor
 import HTTP
 
-final class AcronymsController: ResourceRepresentable {
+final class AcronymsController{
     
-    func makeResource() -> Resource<Acronym> {
-        return Resource(
-            index: index,
-            store: create,
-            show: show,
-            modify: update,
-            destroy: delete
-        )
+    private let droplet: Droplet
+
+    init(droplet: Droplet) {
+        self.droplet = droplet
+    }
+    func addRoutes() {
+        let basic = droplet.grouped("acronyms")
+        basic.get(handler: index)
+        basic.get(Acronym.self, handler: show)
+        basic.post(handler: create)
+        basic.delete(Acronym.self, handler: delete)
+        basic.patch(Acronym.self, handler: update)
+        basic.get(Acronym.self, "user", handler: userIndex)
+        
     }
 
     func index(request: Request) throws -> ResponseRepresentable {
@@ -55,6 +61,12 @@ final class AcronymsController: ResourceRepresentable {
     func delete(request: Request, acronym: Acronym) throws -> ResponseRepresentable {
         try acronym.delete()
         return JSON([:])
+    }
+
+    /// List The User For A particular Acronym
+    func userIndex(request: Request, acronym: Acronym) throws -> ResponseRepresentable {
+        let parrent = try acronym.user()
+        return try JSON(node: parrent?.makeNode())
     }
 }
 
