@@ -52,7 +52,7 @@ final class TILController {
     // The POST to make when registering the user
     func register(request: Request) throws -> ResponseRepresentable {
         // We use formURLEncoded because the data wiil be sent from html form
-        guard let email = request.formURLEncoded?["email"]?.string, let password = request.formURLEncoded?["email"]?.string,let name = request.formURLEncoded?["name"]?.string else {
+        guard let email = request.formURLEncoded?["email"]?.string, let password = request.formURLEncoded?["password"]?.string,let name = request.formURLEncoded?["name"]?.string else {
             return "Missing email, password, or name"
         }
 

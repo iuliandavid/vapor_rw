@@ -9,7 +9,7 @@ class PasswordValidator: ValidationSuite {
         guard let _ = range else {
             throw error(with: value)
         }
-        // let evaluation = Email.self && Count.containedIn(low: 6, high: 64)
+        
         
         try value.validated(by: Count.min(6) && Count.max(64)) 
     }
