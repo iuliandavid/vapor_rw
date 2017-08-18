@@ -1,0 +1,14 @@
+{
+	
+		"port": "$PORT:4343",
+		"host": "0.0.0.0",
+		"securityLayer": "tls",
+		"tls": {
+			"verifyHost": false,
+			"certificates": "files",
+			"certificateFile": "/work/projects/swift/vapor/sslusers/Config/secrets/certs/servercert.pem",
+			"privateKeyFile": "/work/projects/swift/vapor/sslusers/Config/secrets/certs/serverkey.pem",
+			"signature": "selfSigned"
+		}
+	
+}
