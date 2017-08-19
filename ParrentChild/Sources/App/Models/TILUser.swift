@@ -1,6 +1,8 @@
 import Vapor
 
 final class TILUser: Model {
+    /// When using a different name than the class/struct name
+    static var entity = "users"
     /// Set to true if the model is retrieved from database
     var exists: Bool = false
     // Needed for conforming to Model
@@ -59,5 +61,12 @@ final class TILUser: Model {
             "email": email.value,
             "password": password.value
         ])
+    }
+}
+
+/// Extension to get all Acronyms for certain user
+extension TILUser {
+    func acronyms() throws -> [Acronym] {
+        return try children(nil, Acronym.self).all()
     }
 }
