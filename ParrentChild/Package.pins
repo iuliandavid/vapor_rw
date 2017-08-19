@@ -8,6 +8,12 @@
       "version": "1.0.0"
     },
     {
+      "package": "CPostgreSQL",
+      "reason": null,
+      "repositoryURL": "https://github.com/vapor/cpostgresql.git",
+      "version": "1.0.0"
+    },
+    {
       "package": "Console",
       "reason": null,
       "repositoryURL": "https://github.com/vapor/console.git",
@@ -18,12 +24,6 @@
       "reason": null,
       "repositoryURL": "https://github.com/vapor/core.git",
       "version": "1.1.2"
-    },
-    {
-      "package": "CPostgreSQL",
-      "reason": null,
-      "repositoryURL": "https://github.com/vapor/cpostgresql.git",
-      "version": "1.0.0"
     },
     {
       "package": "Crypto",
@@ -50,16 +50,16 @@
       "version": "1.1.0"
     },
     {
-      "package": "Jay",
-      "reason": null,
-      "repositoryURL": "https://github.com/DanToml/Jay.git",
-      "version": "1.0.1"
-    },
-    {
       "package": "JSON",
       "reason": null,
       "repositoryURL": "https://github.com/vapor/json.git",
       "version": "1.0.6"
+    },
+    {
+      "package": "Jay",
+      "reason": null,
+      "repositoryURL": "https://github.com/DanToml/Jay.git",
+      "version": "1.0.1"
     },
     {
       "package": "Leaf",
